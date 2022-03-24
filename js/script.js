@@ -222,7 +222,7 @@ function cargarCancion(sentido) {
 
   reproductor.caratula.src = cancion.caratula;
   reproductor.deslizador["progresoCancion"].value = 0;
-
+  listPlaying();
   setTimeout(() => cambiarCancion(), 500);
 
 }
