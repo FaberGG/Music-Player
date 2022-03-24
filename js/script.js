@@ -6,7 +6,7 @@ window.addEventListener("load", ()=>{
 
 let caratula, caratulaDOM, idFrame, 
   mode = 'claro',
-
+  reproduciendo = 0,
   listadoCanciones = [
     "Chapeleiro-MambaNegra",
     "FantomenK-CrystalTokyo",
@@ -86,8 +86,6 @@ let caratula, caratulaDOM, idFrame,
     claro: ['#e0e5ec', '#ebf0f8', '#d5dae0', '#797d7f', '#a1a1a1', '#d7dbdd', '#5c87fe', '#4b6fd0','#6d9fff', '#314887', '#87c6ff','#000000'],
     oscuro: [ '#16001E', ' #1f002b', '#0d0011', '#F7B2B7', '#7e518f', '#2a0d35', '#7F2982', '#4a184b', '#b43ab9', '#4a184b', '#b43ab9', '#d584d8',],
   }
-  ;
-  let reproduciendo = Math.floor((Math.random() * listadoCanciones.length)+0);
 
 
 
@@ -126,7 +124,8 @@ function iniciarReproductor() {
       alternarReproduccion();
     }
   });
-  cargarCancion(reproduciendo);
+  reproduciendo = Math.floor((Math.random() * listadoCanciones.length));
+  cargarCancion(0);
 }
 
 const ulTag = document.querySelector("ul");
