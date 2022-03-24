@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es" id="html">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>F Music Player</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="font-awesome">
+  <script src="https://kit.fontawesome.com/59885440c1.js" crossorigin="anonymous"></script>
+</head>
+
+<body id="body">
+
+  <div class="container">
+    <div class="player">
+      <div class="player_controls botones_superior">
+        <div class="player_btn player_btn--small" id="playlist">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </div>
+        <h5 class="player_title">Playing now</h5>
+        <div class="player_btn player_btn--small" id="switch">
+          <i class="fa-solid fa-circle-half-stroke"></i>
+        </div>
+      </div>
+
+      <div class="player_album">
+        <img src="" alt="album art" class="player_img">
+      </div>
+      <div>
+        <h2 class="player_artist">FB Music Player</h2>
+        <h3 class="player_song"> By FaberGG </h3>
+      </div>
+
+      
+      <input type="range" value="0" min="0" max="0" step="0.01" class="player_level" id="inputRange"> </>
+
+
+      <div class="audio-duration">
+        <div class="start"> <time>--:--</time> </div>
+        <div class="end"> <time>--:--</time> </div>
+      </div>
+
+      <audio class="player_audio" controls id="audio">
+        <source src="" type="audio/mpeg">
+      </audio>
+
+      <div class="player_controls">
+        <div class="player_btn player_btn--medium" id="anterior">
+          <i class="fas fa-backward"></i>
+        </div>
+
+        <div class="player_btn player_btn--medium blue" id="play">
+          <i class="fa fa-play play-btn"></i>
+          <i class="fa fa-pause pause-btn hide"></i>
+        </div>
+
+        <div class="player_btn player_btn--medium" id="siguiente">
+          <i class="fas fa-step-forward"></i>
+        </div>
+      </div>
+
+      <div class="music-list">
+        <div class="header">
+          <div class="row">
+            <i class="fa-solid fa-bars"></i>
+            <span>Music list</span>
+          </div>
+          <i class="fa-solid fa-xmark" id="close"></i>
+
+        </div>
+
+        <ul>
+          <!-- here li list are coming from js -->
+         
+        </ul>
+
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>
