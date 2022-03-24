@@ -145,7 +145,7 @@ for (let i = 0; i < listadoCanciones.length; i++) {
   liAudioTag.addEventListener("loadeddata", ()=>{
     let duration = duracionCancion(liAudioTag.duration);
     
-    liAudioDuartionTag.innerText = `${duration.minutos}:${duration.segundos}`; //passing total duation of song
+    liAudioDuartionTag.innerText = `${duration.minutos}:${duration.segundos}`;
     liAudioDuartionTag.setAttribute("t-duration", `${duration.minutos}:${duration.segundos}`); //adding t-duration attribute with total duration value
   });
 }
@@ -193,11 +193,8 @@ function switchTema() {
       const element = listadoVariables[index];
       const colorDark = temas.oscuro[index];
       root.style.setProperty(element, colorDark);
-      
-    }
-    mode='oscuro';
-  }
-  else{
+    } mode='oscuro';
+  } else{
     for (let index = 0; index < listadoVariables.length; index++) {
       const element = listadoVariables[index];
       const colorLight = temas.claro[index];
@@ -274,23 +271,15 @@ function alternarReproduccion() {
 
   if (cancion.audio.paused || cancion.audio.ended) {
     idFrame = requestAnimationFrame(actualizarReproductor);
-    reproductor.boton["reproducirPausa"]
-      .querySelector(".pause-btn")
-      .classList.toggle("hide");
-    reproductor.boton["reproducirPausa"]
-      .querySelector(".play-btn")
-      .classList.toggle("hide");
+    reproductor.boton["reproducirPausa"].querySelector(".pause-btn").classList.toggle("hide");
+    reproductor.boton["reproducirPausa"].querySelector(".play-btn").classList.toggle("hide");
     cancion.audio.play();
     reproductor.nodo.classList.add("reproduciendo");
   } else {
     window.cancelAnimationFrame(idFrame);
     cancion.audio.pause();
-    reproductor.boton["reproducirPausa"]
-      .querySelector(".pause-btn")
-      .classList.toggle("hide");
-    reproductor.boton["reproducirPausa"]
-      .querySelector(".play-btn")
-      .classList.toggle("hide");
+    reproductor.boton["reproducirPausa"].querySelector(".pause-btn").classList.toggle("hide");
+    reproductor.boton["reproducirPausa"].querySelector(".play-btn").classList.toggle("hide");
     reproductor.nodo.classList.remove("reproduciendo");
   }
 }
