@@ -1,6 +1,5 @@
 window.addEventListener("load", ()=>{
   iniciarReproductor();
-  listPlaying();
 });
 
 
@@ -125,6 +124,7 @@ function iniciarReproductor() {
     }
   });
   reproduciendo = Math.floor((Math.random() * listadoCanciones.length));
+  listPlaying();
   cargarCancion(0);
 }
 
