@@ -86,7 +86,9 @@ let caratula, caratulaDOM, idFrame,
     oscuro: [ '#16001E', ' #1f002b', '#0d0011', '#F7B2B7', '#7e518f', '#2a0d35', '#7F2982', '#4a184b', '#b43ab9', '#4a184b', '#b43ab9', '#d584d8',],
   }
 
-
+const lyricstag = document.getElementById("letra");
+const portadaAlbun = document.getElementById("portadaAlbum");
+const archivoLetra = document.getElementById("archivo-letra");
 
 function iniciarReproductor() {
   reproductor.boton["reproducirPausa"] = document.getElementById("play");
@@ -95,8 +97,10 @@ function iniciarReproductor() {
   reproductor.boton["playlist"]= document.getElementById("playlist");
   reproductor.boton["closePlaylist"] = document.getElementById("close")
   reproductor.boton["selectorTema"] = document.getElementById("switch");
+  reproductor.boton["mostrarLetra"] = document.getElementById("mostrar-letra");
   reproductor.deslizador["progresoCancion"] = document.getElementById("inputRange");
   const musicList = document.querySelector(".music-list");
+
 
   reproductor.caratula = document.querySelector(".player_album img");
   reproductor.duracionStart = document.querySelector(".start time");
@@ -108,6 +112,7 @@ function iniciarReproductor() {
   reproductor.boton["cancionSiguiente"].addEventListener("click", () => cargarCancion(1));
   reproductor.boton["cancionAnterior"].addEventListener("click", () => cargarCancion(-1));
   reproductor.boton["selectorTema"].addEventListener("click", switchTema);
+  reproductor.boton["mostrarLetra"].addEventListener("click", mostrarLetra);
   reproductor.deslizador["progresoCancion"].addEventListener("input", moverProgreso);
   reproductor.boton["playlist"].addEventListener("click", ()=>{
     musicList.classList.toggle("show");
@@ -152,6 +157,11 @@ for (let i = 0; i < listadoCanciones.length; i++) {
 
   const allLiTag = ulTag.querySelectorAll("li");
 //-------------- funciones:-------------------//
+
+function mostrarLetra(){
+  lyricstag.classList.toggle("hide");
+  portadaAlbun.classList.toggle("show-lyrics");
+}
 
 function listPlaying(){
   for (let j = 0; j < allLiTag.length; j++) {
