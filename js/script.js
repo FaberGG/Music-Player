@@ -147,6 +147,7 @@ function iniciarReproductor() {
         onSuccess: function(tag){
           const data = tag.tags.picture.data;
           const format = tag.tags.picture.format;
+
           let base64string ="";
           for (let i = 0; i < data.length; i++) {
             base64string += String.fromCharCode(data[i]);
@@ -163,7 +164,6 @@ function iniciarReproductor() {
         }
       })
       const urlObj = URL.createObjectURL(event.target.files[0]);
-
       cancion.audio.addEventListener("load", () =>{
           URL.revokeObjectURL(urlObj);
       });
@@ -220,26 +220,6 @@ function cargarAudioInput({target}){
   cancion.audio.src = urlObj;
   alternarReproduccion();
 }
-
-
-
-
-function processData(allText) {
-  allTextLines = allText.split(/\r\n|\n/);
-  next();
-}
-
-function next() {
-  for (i = 0; i<allTextLines.length; i++){
-      if (allTextLines[i].search(/^(\[)(\d*)(:)(.*)(\])(.*)/i) >=0 ) {
-          line = allTextLines[i].match(/^(\[)(\d*)(:)(.*)(\])(.*)/i);
-          tim[i] = parseInt(line[2]) * 60 + parseFloat(line[4]);
-          llave[i] = line[5];
-          lyrics[i] = line[6];
-      }
-  }
-}
-
 
 
 
