@@ -5,9 +5,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="src/logoNaranja.png.png"
+  type="image/x-icon">
   <title>FB Music Player</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="font-awesome">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js" integrity="sha512-YsR46MmyChktsyMMou+Bs74oCa/CDdwft7rJ5wlnmDzMj1mzqncsfJamEEf99Nk7IB0JpTMo5hS8rxB49FUktQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://kit.fontawesome.com/59885440c1.js" crossorigin="anonymous"></script>
 </head>
 
@@ -66,17 +69,22 @@
 
       <div class="music-list">
         <div class="header">
-          <div class="row">
-            <i class="fa-solid fa-bars"></i>
-            <span>Music list</span>
+          <div class="player_btn player_btn--super-small">
+            <i class="fa-solid fa-circle-arrow-up"></i>
+            <input type="file" id="archivo-audio" accept=".mp3,  .wav">
           </div>
-          <i class="fa-solid fa-xmark" id="close"></i>
-
+          <div class="row">
+            <span>Music playlist</span>
+          </div>
+          <div class="player_btn player_btn--super-small" id="close">
+            <i class="fa-solid fa-xmark"></i>
+          </div>
+          
         </div>
 
         <ul>
           <!-- here li list are coming from js -->
-         
+
         </ul>
 
       </div>

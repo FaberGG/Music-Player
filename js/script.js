@@ -1,6 +1,7 @@
 window.addEventListener("load", ()=>{
   iniciarReproductor();
 });
+const jsmediatags = window.jsmediatags;
 
 let caratula, caratulaDOM, idFrame, allTextLines = " ", lyrics = [], llave = [], tim = [],
   line = " ",
@@ -116,6 +117,7 @@ function iniciarReproductor() {
   reproductor.boton["closePlaylist"] = document.getElementById("close")
   reproductor.boton["selectorTema"] = document.getElementById("switch");
   reproductor.boton["mostrarLetra"] = document.getElementById("mostrar-letra");
+  reproductor.boton["inputFile"] = document.getElementById("archivo-audio");
   reproductor.deslizador["progresoCancion"] = document.getElementById("inputRange");
   const musicList = document.querySelector(".music-list");
 
@@ -138,6 +140,29 @@ function iniciarReproductor() {
   reproductor.boton["closePlaylist"].addEventListener("click", ()=>{
       reproductor.boton["playlist"].click();
   });
+  reproductor.boton["inputFile"].addEventListener("change", () => {
+      const file = event.target.files[0];
+
+      jsmediatags.read(file, {
+        onSuccess: function(tag){
+          let tituloInput = tag.tags.title;
+          let artistaInput = tag.tags.artist;
+          document.querySelector(".player_artist").innerText = artistaInput;
+          document.querySelector(".player_song").innerText = tituloInput;
+        },
+        onError: function(error){
+          console.log(error);
+        }
+      })
+      const urlObj = URL.createObjectURL(event.target.files[0]);
+
+      cancion.audio.addEventListener("load", () =>{
+          URL.revokeObjectURL(urlObj);
+      });
+      cancion.audio.src = urlObj;
+      alternarReproduccion();
+  })
+
 
   // esto a continuacion pausa o reanuda la cancion si se presiona la tecla espacio
   document.getElementById("html").addEventListener('keypress', function (e) {
@@ -176,6 +201,19 @@ for (let i = 0; i < listadoCanciones.length; i++) {
 const allLiTag = ulTag.querySelectorAll("li");
 
 //-------------- funciones:-------------------//
+
+
+function cargarAudioInput({target}){
+  const urlObj = URL.createObjectURL(target.files[0]);
+
+  cancion.audio.addEventListener("load", () =>{
+      URL.revokeObjectURL(urlObj);
+  });
+  cancion.audio.src = urlObj;
+  alternarReproduccion();
+}
+
+
 
 
 function processData(allText) {
